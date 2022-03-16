@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cassert>
+#include <cstdlib>
 #include <cstring>
 #include "cuda.h"
 #include "nvvm.h"
@@ -67,7 +68,7 @@ int main(int argc, char **argv) {
 
     nvvmProgram prog;
 
-    auto libdevice_str = loadFile("/home/magkanar/spack_software/linux-ubuntu20.04-skylake/gcc-11.1.0/cuda-11.4.2-ygshzt/nvvm/libdevice/libdevice.10.bc");
+    auto libdevice_str = loadFile(std::string(std::getenv("CUDA_ROOT")) + "/nvvm/libdevice/libdevice.10.bc");
     const char *libdeviceMod = libdevice_str.c_str();
     size_t libdeviceModSize = libdevice_str.size();
     std::cout << "libdeviceModSize = " << libdeviceModSize << std::endl;
