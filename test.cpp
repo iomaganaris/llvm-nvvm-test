@@ -54,9 +54,10 @@ int main(int argc, char **argv) {
 
     nvvmProgram prog;
 
-    auto libdevice_str = loadFile("/home/magkanar/software/linux-ubuntu20.04-skylake/gcc-9.3.0/nvhpc-22.1-wg2mad/Linux_x86_64/22.1/cuda/11.5/nvvm/libdevice/libdevice.10.bc");
+    auto libdevice_str = loadFile("/home/magkanar/spack_software/linux-ubuntu20.04-skylake/gcc-11.1.0/nvhpc-22.1-zsmejw/Linux_x86_64/22.1/cuda/11.5/nvvm/libdevice/libdevice.10.bc");
     const char *libdeviceMod = libdevice_str.c_str();
     size_t libdeviceModSize = libdevice_str.size();
+    std::cout << "libdeviceModSize = " << libdeviceModSize << std::endl;
     const char *myIr = str.c_str();
     size_t myIrSize = str.size();
 

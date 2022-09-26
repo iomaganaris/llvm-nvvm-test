@@ -5,7 +5,12 @@
 
 
 void checkCudaErrors(CUresult err) {
-  assert(err == CUDA_SUCCESS);
+    if (err != CUDA_SUCCESS) {
+        const char *ret = NULL;
+        cuGetErrorName(err, &ret);
+        std::cerr << "CUDA error: " << ret << "\n";
+        exit(1);
+    }
 }
 
 /// main - Program entry point
@@ -36,7 +41,7 @@ int main(int argc, char **argv) {
     return 1;
   }
 
-  std::ifstream t("t2.ptx");
+  std::ifstream t("t2_link.ptx");
   if (!t.is_open()) {
     std::cerr << "kernel.ptx not found\n";
     return 1;
